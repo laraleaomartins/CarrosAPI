@@ -33,7 +33,7 @@ namespace CarrosAPI.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> AtualizarCarro([FromBody] Carro carro, int id)
+        public async Task<IActionResult> AtualizarCarro([FromBody] Carro carro)
         {
             await Servico.AtualizarCarro(carro);
             return NoContent();
