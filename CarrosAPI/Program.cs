@@ -11,6 +11,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CarroContext>(x => x.UseSqlServer("Persist Security Info=False;Integrated Security=true;Initial Catalog=Carros;server=(local)"));
+//Server = localhost\MSSQLSERVER01; Database = master; Trusted_Connection = True;
 builder.Services.AddScoped<ICarroServico, CarroServico>();
 builder.Services.AddScoped<ICarroRepositorio, CarroRepositorio>();
 

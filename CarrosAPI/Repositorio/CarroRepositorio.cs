@@ -15,8 +15,7 @@ namespace CarrosAPI.Repositorio
         {
             try
             {
-                var atualizar = await Context.Carros.FindAsync(id);
-                Context.Entry(carro).CurrentValues.SetValues(carro);
+                Context.Entry(carro).State = EntityState.Modified;
                 await Context.SaveChangesAsync();
             }
             catch(Exception ex)
