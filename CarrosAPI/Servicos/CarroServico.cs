@@ -12,9 +12,9 @@ namespace CarrosAPI.Servicos
             Repositorio = repositorio;
         }
 
-        public Task AtualizarCarro(Carro carro, int id)
+        public Task AtualizarCarro(Carro carro)
         {
-            return Repositorio.AtualizarCarro(carro, id);
+            return Repositorio.AtualizarCarro(carro);
         }
 
         public Task<IEnumerable<Carro>> BuscarCarros()

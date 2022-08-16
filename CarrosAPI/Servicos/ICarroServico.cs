@@ -7,7 +7,7 @@ namespace CarrosAPI.Servicos
         Task<IEnumerable<Carro>> BuscarCarros();
         Task<Carro> BuscarCarros(int? id);
         Task<Carro> CriarCarro(Carro carro);
-        Task AtualizarCarro(Carro carro, int id);
+        Task AtualizarCarro(Carro carro);
         Task DeletarCarro(int id);
     }
 }

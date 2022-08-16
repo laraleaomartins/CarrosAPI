@@ -11,7 +11,7 @@ namespace CarrosAPI.Repositorio
             Context = context;
         }
 
-        public async  Task AtualizarCarro(Carro carro, int id)
+        public async  Task AtualizarCarro(Carro carro)
         {
             try
             {
@@ -30,7 +30,8 @@ namespace CarrosAPI.Repositorio
             try
             {
                 return await Context.Carros.ToListAsync();
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 throw new Exception($"Não foi possível listar carros - {ex}");
             }
@@ -43,7 +44,8 @@ namespace CarrosAPI.Repositorio
             {
                 var carro = await Context.Carros.FindAsync(id);
                 return carro;
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 throw new Exception($"Não foi possível encontrar carro - {ex}");
             }
@@ -72,7 +74,8 @@ namespace CarrosAPI.Repositorio
                 var deletar = await Context.Carros.FindAsync(id);
                 Context.Carros.Remove(deletar);
                 Context.SaveChanges();
-            }catch(Exception ex)
+            }
+            catch(Exception ex)
             {
                 throw new Exception($"Não foi possível deletar carro - {ex}");
             }
