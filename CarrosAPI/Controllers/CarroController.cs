@@ -1,4 +1,5 @@
-﻿using CarrosAPI.Models;
+﻿using CarrosAPI.Data.VO;
+using CarrosAPI.Models;
 using CarrosAPI.Servicos;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,13 +28,13 @@ namespace CarrosAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CriarCarro([FromBody]Carro carro)
+        public async Task<IActionResult> CriarCarro([FromBody]CarroVO carro)
         {
             return Ok(await Servico.CriarCarro(carro));
         }
 
         [HttpPut]
-        public async Task<IActionResult> AtualizarCarro([FromBody] Carro carro)
+        public async Task<IActionResult> AtualizarCarro([FromBody] CarroVO carro)
         {
             await Servico.AtualizarCarro(carro);
             return NoContent();

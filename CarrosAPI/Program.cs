@@ -1,3 +1,4 @@
+using CarrosAPI.Aplicacao;
 using CarrosAPI.Repositorio;
 using CarrosAPI.Repositorio.Generico;
 using CarrosAPI.Servicos;
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<CarroContext>(x => x.UseSqlServer("Persist Securit
 //Server = localhost\MSSQLSERVER01; Database = master; Trusted_Connection = True;
 builder.Services.AddScoped<ICarroServico, CarroServico>();
 builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioGenerico<>));
+builder.Services.AddAutoMapper(typeof(ConfiguracaoAutoMapper));
 
 var app = builder.Build();
 

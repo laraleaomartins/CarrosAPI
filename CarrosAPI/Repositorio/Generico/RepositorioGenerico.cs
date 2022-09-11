@@ -15,18 +15,23 @@ namespace CarrosAPI.Repositorio.Generico
 
         public async Task Atualizar(T item)
         {
-            var resultado = DataSet.SingleOrDefault(c => c.Id.Equals(item.Id));
-            if (resultado != null)
+            //var resultado = DataSet.SingleOrDefault(c => c.Id.Equals(item.Id));
+            //if (resultado == null)
+            //    throw new Exception($"Não existe um carro com este id.");
+
+            try
             {
-                try
-                {
-                    Context.Entry(resultado).State = EntityState.Modified;
-                    await Context.SaveChangesAsync();
-                }
-                catch (Exception ex)
-                {
-                    throw new Exception($"Não foi possível criar carro - {ex}");
-                }
+                var resultado = DataSet.SingleOrDefault(c => c.Id.Equals(item.Id));
+                if (resultado == null)
+                    throw new Exception($"Não existe um carro com este id.");
+
+                Context.ChangeTracker.Clear();
+                Context.Entry(item).State = EntityState.Modified;
+                await Context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Não foi possível atualizar carro - {ex}");
             }
         }
 
