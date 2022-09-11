@@ -1,8 +1,9 @@
-﻿namespace CarrosAPI.Models
+﻿using CarrosAPI.Models.Base;
+
+namespace CarrosAPI.Models
 {
-    public class Carro
+    public class Carro : BaseEntity
     {
-        public int CarroId { get; set; }
         public string Cor { get; set; }
         public string Modelo { get; set; }
         public int Ano { get; set; }

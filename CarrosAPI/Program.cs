@@ -1,4 +1,5 @@
 using CarrosAPI.Repositorio;
+using CarrosAPI.Repositorio.Generico;
 using CarrosAPI.Servicos;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<CarroContext>(x => x.UseSqlServer("Persist Security Info=False;Integrated Security=true;Initial Catalog=Carros;server=(local)"));
 //Server = localhost\MSSQLSERVER01; Database = master; Trusted_Connection = True;
 builder.Services.AddScoped<ICarroServico, CarroServico>();
-builder.Services.AddScoped<ICarroRepositorio, CarroRepositorio>();
+builder.Services.AddScoped(typeof(IRepositorio<>), typeof(RepositorioGenerico<>));
 
 var app = builder.Build();
 

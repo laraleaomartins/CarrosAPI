@@ -5,36 +5,36 @@ namespace CarrosAPI.Servicos
 {
     public class CarroServico : ICarroServico
     {
-        private ICarroRepositorio Repositorio;
+        private readonly IRepositorio<Carro> Repositorio;
 
-        public CarroServico(ICarroRepositorio repositorio)
+        public CarroServico(IRepositorio<Carro> repositorio)
         {
             Repositorio = repositorio;
         }
 
         public Task AtualizarCarro(Carro carro)
         {
-            return Repositorio.AtualizarCarro(carro);
+            return Repositorio.Atualizar(carro);
         }
 
         public Task<IEnumerable<Carro>> BuscarCarros()
         {
-            return Repositorio.BuscarCarros();
+            return Repositorio.BuscarTodos();
         }
 
         public Task<Carro> BuscarCarros(int? id)
         {
-            return Repositorio.BuscarCarros(id);
+            return Repositorio.Buscar(id);
         }
 
         public Task<Carro> CriarCarro(Carro carro)
         {
-            return Repositorio.CriarCarro(carro);
+            return Repositorio.Criar(carro);
         }
 
         public Task DeletarCarro(int id)
         {
-            return Repositorio.DeletarCarro(id);
+            return Repositorio.Deletar(id);
         }
     }
 }

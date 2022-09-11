@@ -3,6 +3,7 @@ using CarrosAPI.Repositorio;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CarrosAPI.Migrations
 {
     [DbContext(typeof(CarroContext))]
-    partial class CarroContextModelSnapshot : ModelSnapshot
+    [Migration("20220911181934_NewDatabaseClone")]
+    partial class NewDatabaseClone
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,11 +25,11 @@ namespace CarrosAPI.Migrations
 
             modelBuilder.Entity("CarrosAPI.Models.Carro", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("CarroId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CarroId"), 1L, 1);
 
                     b.Property<int>("Ano")
                         .HasColumnType("int");
@@ -43,7 +45,7 @@ namespace CarrosAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("CarroId");
 
                     b.ToTable("Carros");
                 });
